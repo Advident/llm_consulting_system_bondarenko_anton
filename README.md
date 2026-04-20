@@ -58,15 +58,15 @@ cd llm_consulting_system
 ```
 
 ### 2. Настройка .env
-bot_service/.env
-BOT_TOKEN=your_telegram_token
-OPENROUTER_API_KEY=your_openrouter_key
-OPENROUTER_MODEL=openai/gpt-4o-mini
+bot_service/.env  
+BOT_TOKEN=your_telegram_token  
+OPENROUTER_API_KEY=your_openrouter_key  
+OPENROUTER_MODEL=openai/gpt-4o-mini  
 
-AUTH_SERVICE_URL=http://auth_service:8000
+AUTH_SERVICE_URL=http://auth_service:8000  
 
-CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
-REDIS_URL=redis://redis:6379/0
+CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//  
+REDIS_URL=redis://redis:6379/0  
 
 ### 3. Запуск через Docker
 docker compose up --build -d
@@ -88,33 +88,33 @@ docker compose ps
 
 RabbitMQ:
 
-login: guest
-password: guest
+login: guest  
+password: guest  
 
-Работа с Auth Service
-Регистрация
-POST /auth/register
-{
-  "email": "test@email.com",
-  "password": "12345678"
-}
+Работа с Auth Service  
+Регистрация  
+POST /auth/register  
+{  
+  "email": "test@email.com",  
+  "password": "12345678"  
+}  
 
-Логин
-POST /auth/login
+Логин  
+POST /auth/login  
 
-Ответ:
-{
-  "access_token": "..."
-}
+Ответ:  
+{  
+  "access_token": "..."  
+}  
 
-Получение пользователя
-GET /auth/me
-Authorization: Bearer <token>
+Получение пользователя  
+GET /auth/me  
+Authorization: Bearer <token>  
 
-Работа с ботом
-1. Передать токен
-/token <JWT>
-2. Отправить сообщение
+Работа с ботом  
+1. Передать токен  
+/token <JWT>  
+2. Отправить сообщение  
 
 Бот:
 
