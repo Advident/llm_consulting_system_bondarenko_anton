@@ -94,8 +94,7 @@ password: guest
 
 ## Работа с Auth Service  
 
-Регистрация  
-
+**Регистрация**
 POST /auth/register  
 
 {  
@@ -103,8 +102,7 @@ POST /auth/register
   "password": "12345678"  
 }  
 
-Логин  
-
+**Логин**  
 POST /auth/login  
 
 Ответ:  
@@ -112,7 +110,7 @@ POST /auth/login
   "access_token": "..."  
 }  
 
-Получение пользователя  
+**Получение пользователя**    
 GET /auth/me  
 Authorization: Bearer token
 
@@ -128,35 +126,34 @@ Authorization: Bearer token
 * результат возвращается пользователю
 
 ## Тесты
-Auth Service
+**Auth Service**  
 * cd auth_service
 * uv run pytest
 
-Bot Service
+**Bot Service**  
 * cd bot_service
 * uv run pytest
 
 ## Полезные команды
-Перезапуск:  
+**Перезапуск:**  
 docker compose restart
 
-Пересборка:  
+**Пересборка:**  
 docker compose up --build -d
 
-Логи:  
+**Логи:**  
 docker compose logs -f
 
 Возможные проблемы  
-
-Бот не отвечает:  
+**Бот не отвечает:**  
 * проверь BOT_TOKEN
 * проверь интернет внутри контейнера
 
-Celery не подключается:  
-проверь RabbitMQ  
-проверь CELERY_BROKER_URL  
+**Celery не подключается:**  
+* проверь RabbitMQ  
+* проверь CELERY_BROKER_URL  
 
-Не меняется модель LLM  
+**Не меняется модель LLM**    
 пересобери контейнеры:  
 * docker compose down  
 * docker compose up --build -d  
