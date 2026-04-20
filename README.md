@@ -94,7 +94,7 @@ password: guest
 
 ## Работа с Auth Service  
 
-**Регистрация**
+**Регистрация**  
 POST /auth/register  
 
 {  
