@@ -59,6 +59,7 @@ cd llm_consulting_system
 
 ### 2. Настройка .env
 bot_service/.env  
+
 BOT_TOKEN=your_telegram_token  
 OPENROUTER_API_KEY=your_openrouter_key  
 OPENROUTER_MODEL=openai/gpt-4o-mini  
@@ -94,13 +95,16 @@ password: guest
 ## Работа с Auth Service  
 
 Регистрация  
+
 POST /auth/register  
+
 {  
   "email": "test@email.com",  
   "password": "12345678"  
 }  
 
 Логин  
+
 POST /auth/login  
 
 Ответ:  
@@ -110,11 +114,11 @@ POST /auth/login
 
 Получение пользователя  
 GET /auth/me  
-Authorization: Bearer <token>  
+Authorization: Bearer token
 
 ## Работа с ботом  
 1. Передать токен  
-/token <JWT>  
+/token JWT 
 2. Отправить сообщение  
 
 Бот:
@@ -133,28 +137,29 @@ Bot Service
 * uv run pytest
 
 ## Полезные команды
-Перезапуск:
+Перезапуск:  
 docker compose restart
 
-Пересборка:
+Пересборка:  
 docker compose up --build -d
 
-Логи:
+Логи:  
 docker compose logs -f
 
-Возможные проблемы
-Бот не отвечает:
+Возможные проблемы  
+
+Бот не отвечает:  
 * проверь BOT_TOKEN
 * проверь интернет внутри контейнера
 
-Celery не подключается:
-проверь RabbitMQ
-проверь CELERY_BROKER_URL
+Celery не подключается:  
+проверь RabbitMQ  
+проверь CELERY_BROKER_URL  
 
-Не меняется модель LLM
-пересобери контейнеры:
-* docker compose down
-* docker compose up --build -d
+Не меняется модель LLM  
+пересобери контейнеры:  
+* docker compose down  
+* docker compose up --build -d  
 убедись, что переменная OPENROUTER_MODEL читается внутри контейнера
 
 
@@ -166,16 +171,12 @@ ruff check .
 
 All checks passed!
 
-Итог
-
 ## Реализовано:
 * JWT-аутентификация
 * Telegram-бот с авторизацией
 * асинхронная обработка через Celery
 * интеграция с LLM (OpenRouter)
 * Docker-инфраструктура
-
-
 
 ## Скриншоты:
 * Регистрация
