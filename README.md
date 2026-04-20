@@ -20,15 +20,15 @@
 ## Архитектура
 
 
-Telegram
-↓
-Bot Service (aiogram)
-↓
-Celery Worker → OpenRouter (LLM)
-↓
-Redis (result backend)
+Telegram  
+↓  
+Bot Service (aiogram)  
+↓  
+Celery Worker → OpenRouter (LLM)  
+↓  
+Redis (result backend)  
 
-Auth Service → JWT
+Auth Service → JWT  
 RabbitMQ → очередь задач
 
 
@@ -82,7 +82,7 @@ docker compose ps
 * rabbitmq
 * redis
 
-Доступ:  
+## Доступ:  
 * Auth API	http://localhost:8000/docs
 * RabbitMQ UI	http://localhost:15672
 
@@ -91,7 +91,8 @@ RabbitMQ:
 login: guest  
 password: guest  
 
-Работа с Auth Service  
+## Работа с Auth Service  
+
 Регистрация  
 POST /auth/register  
 {  
@@ -111,7 +112,7 @@ POST /auth/login
 GET /auth/me  
 Authorization: Bearer <token>  
 
-Работа с ботом  
+## Работа с ботом  
 1. Передать токен  
 /token <JWT>  
 2. Отправить сообщение  
@@ -122,15 +123,16 @@ Authorization: Bearer <token>
 * worker обращается к LLM
 * результат возвращается пользователю
 
-Тесты
+## Тесты
 Auth Service
 * cd auth_service
 * uv run pytest
+
 Bot Service
 * cd bot_service
 * uv run pytest
 
-Полезные команды
+## Полезные команды
 Перезапуск:
 docker compose restart
 
@@ -166,7 +168,7 @@ All checks passed!
 
 Итог
 
-Реализовано:
+## Реализовано:
 * JWT-аутентификация
 * Telegram-бот с авторизацией
 * асинхронная обработка через Celery
