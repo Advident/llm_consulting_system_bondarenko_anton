@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Logs
+*.log
+logs/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+.tox/
+.nox/
+
+# Type check / lint
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.dmypy.json
+.pytype/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+docker-data/
+*.pid
+
+# uv
+uv.lock
+
+# Project-specific
+auth_service/auth.db
+auth_service/*.db
+bot_service/*.db

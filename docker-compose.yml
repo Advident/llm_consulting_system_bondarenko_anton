@@ -1,0 +1,47 @@
+services:
+  redis:
+    image: redis:7
+    container_name: llm_redis
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: llm_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  auth_service:
+    build:
+      context: ./auth_service
+    container_name: llm_auth_service
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./auth_service/.env
+
+  bot_service:
+    build:
+      context: ./bot_service
+    container_name: llm_bot_service
+    env_file:
+      - ./bot_service/.env
+    command: uv run python -m app.run_bot
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - rabbitmq
+      - auth_service
+
+  celery_worker:
+    build:
+      context: ./bot_service
+    container_name: llm_celery_worker
+    env_file:
+      - ./bot_service/.env
+    command: uv run celery -A app.infra.celery_app:celery_app worker --pool=solo --loglevel=info
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - rabbitmq
